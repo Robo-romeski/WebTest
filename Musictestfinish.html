@@ -1,0 +1,126 @@
+ <!DOCTYPE html>
+<html>
+<head>
+
+	<style>
+  table
+{
+border-collapse:collapse;
+}
+  .outer tr > td{
+
+    width: 200px;
+    height:200px;
+    text-align: center;
+    
+    }
+    .outer table{
+      width:100%;
+      border: 1px dashed black;
+    }
+.outer table td{
+  border: 1px dashed black;
+  width: 33%;
+  height:15px;
+}
+	</style>
+</head>
+	<body>
+		<table class="outer" border="1">
+<tr>
+  <td id="td1"></td>
+  <td id="td2"></td>		
+  <td id="td3"></td>
+  </tr>
+<tr>
+  <td id="td4"></td>
+  <td id="td5">
+
+<table border="1">
+<tr>
+  <td>a</td>
+  <td>b</td>		
+  <td>c</td>
+  </tr>
+<tr>
+  <td>d</td>
+  <td>e</td>		
+  <td>f</td>
+</tr>
+<tr>
+  <td>g</td>
+  <td>h</td>		
+  <td>i</td>
+</tr>
+
+</table>
+<button onclick="letsShuffle()">Click Me!</button>
+
+
+
+
+  </td>		
+  <td id="td6"></td>
+</tr>
+<tr>
+  <td id="td7"></td>
+  <td id="td8"></td>		
+  <td id="td9"></td>
+</tr>
+</table>
+<script>
+var letters = ["a", "b", "c", "d","e","f","g","h","i"];
+var shuffled = letters;
+function letsShuffle(){
+ shuffled = shuffle(shuffled);
+ console.log(shuffled);
+ var newTable = "<table><tr><td>"+shuffled[0]+"</td>"+
+  "<td>"+shuffled[1]+"</td>"+    
+  "<td>"+shuffled[2]+"</td>"+
+  "</tr><tr>"+
+  "<td>"+shuffled[3]+"</td>"+
+  "<td>"+shuffled[4]+"</td>"+   
+  "<td>"+shuffled[5]+"</td>"+
+  "</tr><tr>"+
+  "<td>"+shuffled[6]+"</td>"+
+  "<td>"+shuffled[7]+"</td>"+    
+  "<td>"+shuffled[8]+"</td>"+
+"</tr></table><button onclick='letsShuffle()'>Click Me!</button>";
+
+for (var i = 1; i <= 9; i++) {
+document.getElementById( "td" + i).innerHTML="";
+
+};
+  
+var randomTd = Math.floor(Math.random() * 8) +1;
+var chosenTd = "td" + randomTd;
+console.log(chosenTd);
+document.getElementById(chosenTd).innerHTML=newTable;
+
+}
+function shuffle(array) {
+  var currentIndex = array.length
+    , temporaryValue
+    , randomIndex
+    ;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+}
+
+</script>
+</body>
+</head>
+</html>
